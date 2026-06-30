@@ -1,0 +1,60 @@
+<header class="template-create__header">
+  <h1 class="text-headline-lg template-create__h1">
+    New template <i class="fa-solid fa-dumbbell"></i>
+  </h1>
+
+  <p class="text-body-md text-muted">Add your exercises :)</p>
+</header>
+
+<main class="flex-column template-create__main">
+  <section class="flex-column workout-card">
+    <label class="text-label-sm" for="template-name">Routine Name</label>
+    <input id="template-name"
+           type="text"
+           class="template-create__input text-body-lg"
+           placeholder="Ex: Pierna"
+           [ngModel]="templateName()"
+           (ngModelChange)="templateName.set($event)">
+  </section>
+
+  <section class="flex-column workout-card">
+    <label class="text-label-sm" for="exercise-name">Exercises</label>
+
+    <div class="template-create__input-group">
+      <input id="exercise-name"
+             type="text"
+             class="template-create__input text-body-md"
+             placeholder="Add exercise..."
+             [ngModel]="exerciseName()"
+             (ngModelChange)="exerciseName.set($event)"
+             (keyup.enter)="onAddExercise()">
+
+      <button class="btn-primary" (click)="onAddExercise()">
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+    @if (hasExercises()) {
+      <ul class="template-create__list">
+        @for (exercise of exercises(); track exercise.id) {
+          <li class="template-create__list-item">
+            <span class="text-body-md">{{ exercise.name }}</span>
+
+            <button class="template-create__delete-btn"
+                    (click)="onRemoveExercise(exercise.id)">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</main>
+
+<footer class="template-create__footer">
+  <button class="btn-primary template-create__btn-block text-body-lg"
+          [disabled]="isSaveButtonDisabled()"
+          (click)="onSaveTemplate()">
+    <i class="fa-solid fa-floppy-disk"></i> Save
+  </button>
+</footer>

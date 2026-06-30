@@ -1,1 +1,217 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: #0e1416;
+  --on-background: #dde4e5;
+  --surface: #0e1416;
+  --surface-dim: #0e1416;
+  --surface-bright: #343a3c;
+  --surface-container-lowest: #090f11;
+  --surface-container-low: #161d1e;
+  --surface-container: #1a2122;
+  --surface-container-high: #242b2d;
+  --surface-container-highest: #2f3638;
+  --surface-variant: #2f3638;
+  --on-surface: #dde4e5;
+  --on-surface-variant: #bbc9cd;
+  --inverse-surface: #dde4e5;
+  --inverse-on-surface: #2b3233;
+  --surface-tint: #2fd9f4;
+
+  --primary: #8aebff;
+  --on-primary: #00363e;
+  --primary-container: #22d3ee;
+  --on-primary-container: #005763;
+  --inverse-primary: #006877;
+  --primary-fixed: #a2eeff;
+  --primary-fixed-dim: #2fd9f4;
+  --on-primary-fixed: #001f25;
+  --on-primary-fixed-variant: #004e5a;
+
+  --secondary: #c4c7ca;
+  --on-secondary: #2d3133;
+  --secondary-container: #44474a;
+  --on-secondary-container: #b3b5b8;
+  --secondary-fixed: #e0e3e6;
+  --secondary-fixed-dim: #c4c7ca;
+  --on-secondary-fixed: #191c1e;
+  --on-secondary-fixed-variant: #44474a;
+
+  --tertiary: #ffd6a3;
+  --on-tertiary: #462b00;
+  --tertiary-container: #ffb13b;
+  --on-tertiary-container: #6e4600;
+  --tertiary-fixed: #ffddb5;
+  --tertiary-fixed-dim: #ffb957;
+  --on-tertiary-fixed: #2a1800;
+  --on-tertiary-fixed-variant: #643f00;
+
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  --outline: #859397;
+  --outline-variant: #3c494c;
+  --border-card: #2A2F3A;
+
+  --layer-0: #0F1115;
+  --layer-1: #1E222B;
+  --layer-2: #2A2F3A;
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-base: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  --container-padding: 20px;
+  --gutter: 16px;
+
+  --radius-sm: 0.25rem;
+  --radius-default: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+
+  --shadow-level-1: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-glow-active: 0px 0px 8px rgba(138, 235, 255, 0.4); /* Para PRs y Progress */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--on-background);
+  font-family: 'Inter', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-display-lg {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-lg {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-lg-mobile {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: -0.01em;
+}
+
+.text-headline-md {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+}
+
+.text-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0;
+}
+
+.text-body-md {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.text-label-md {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.01em;
+}
+
+.text-label-sm {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-mono-metrics {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.workout-card {
+  gap: var(--spacing-sm);
+  background-color: var(--layer-1);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-level-1);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid var(--layer-2);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--layer-2);
+  }
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
