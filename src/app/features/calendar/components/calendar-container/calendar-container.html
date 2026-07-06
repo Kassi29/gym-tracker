@@ -1,0 +1,59 @@
+<div class="calendar-container__header">
+  <div class="calendar-container__nav">
+    <button class="btn-icon"
+            (click)="onPrevMonthClicked()"
+            [disabled]="isPrevMonthDisabled()">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <h2 class="text-headline-md calendar-container__month">
+      {{ currentMonthName() }}
+    </h2>
+
+    <button class="btn-icon"
+            (click)="onNextMonthClicked()"
+            aria-label="Next month">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <p class="text-label-md calendar-container__subtitle">
+    {{ totalWorkouts() }} Sessions completed
+  </p>
+</div>
+
+<div class="calendar-container__body">
+  <app-calendar-grid [gridDays]="gridDays()"
+                     [currentMonth]="currentDate()"
+                     [selectedDate]="selectedDate()"
+                     [workoutRecords]="workoutRecords()"
+                     (daySelected)="onDaySelected($event)">
+  </app-calendar-grid>
+</div>
+
+<app-bottom-sheet title="Select a Routine"
+                  [isOpen]="isTemplateModalOpen()"
+                  (closed)="onSheetClosed()">
+  <div class="calendar-container__template-list">
+    @if (hasSuggestedTemplates()) {
+      @for (template of suggestedTemplates(); track template.id) {
+        <button class="calendar-container__template-card"
+                (click)="onStartWorkout(template.id)">
+          <div class="calendar-container__template-info">
+            <span class="text-label-lg calendar-container__template-name">{{ template.name }}</span>
+
+            <span class="text-body-sm calendar-container__template-target">
+              {{ template.exercises.length }} exercises
+            </span>
+          </div>
+
+          <i class="fa-solid fa-play calendar-container__template-icon"></i>
+        </button>
+      }
+    } @else {
+      <p class="text-body-md calendar-container__empty-hint">
+        You have no saved routines yet.
+      </p>
+    }
+  </div>
+</app-bottom-sheet>

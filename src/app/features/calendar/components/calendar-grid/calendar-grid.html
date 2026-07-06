@@ -1,0 +1,24 @@
+<div class="calendar-grid__header">
+  <span class="calendar-grid__weekday text-label-md">SUN</span>
+  <span class="calendar-grid__weekday text-label-md">MON</span>
+  <span class="calendar-grid__weekday text-label-md">TUE</span>
+  <span class="calendar-grid__weekday text-label-md">WED</span>
+  <span class="calendar-grid__weekday text-label-md">THU</span>
+  <span class="calendar-grid__weekday text-label-md">FRI</span>
+  <span class="calendar-grid__weekday text-label-md">SAT</span>
+</div>
+
+<div class="calendar-grid__days">
+  @for (day of gridDays(); track $index) {
+    <button class="calendar-grid__day text-mono-metrics"
+            [class.calendar-grid__day--inactive]="!isCurrentMonth(day)"
+            [class.calendar-grid__day--selected]="isSelectedDay(day)"
+            (click)="onDayClicked(day)">
+      {{ day.getDate() }}
+
+      @if (hasWorkout(day)) {
+        <span class="calendar-grid__dot"></span>
+      }
+    </button>
+  }
+</div>

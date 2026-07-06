@@ -80,7 +80,11 @@
 
 
   --shadow-level-1: 0px 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-glow-active: 0px 0px 8px rgba(138, 235, 255, 0.4); /* Para PRs y Progress */
+  --shadow-glow-active: 0px 0px 8px rgba(138, 235, 255, 0.4);
+
+  --scrim: rgba(0, 0, 0, 0.6);
+  --scrim-strong: rgba(0, 0, 0, 0.4);
+  --always-on-contrast: #ffffff;
 }
 
 *,
@@ -185,25 +189,25 @@ body {
   border: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+}
 
-  &:hover {
-    opacity: 0.9;
-  }
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: #FFFFFF;
+  color: var(--always-on-contrast);
   border: 1px solid var(--layer-2);
   border-radius: var(--radius-md);
   padding: var(--spacing-sm) var(--spacing-md);
   font-family: inherit;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
 
-  &:hover {
-    background-color: var(--layer-2);
-  }
+.btn-secondary:hover {
+  background-color: var(--layer-2);
 }
 
 .flex-column {

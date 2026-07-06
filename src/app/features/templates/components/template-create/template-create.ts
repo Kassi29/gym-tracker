@@ -1,9 +1,7 @@
-import {Component, computed, inject, signal} from '@angular/core';
-import {Router} from '@angular/router';
-import {TemplateService} from '../../services/template.service';
-import {Template, TemplateExercise} from '../../../../core/models/template';
-import {APP_ROUTES} from '../../../../core/contants/routes.constants';
+import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TemplateStore} from '../../services/template.store';
+import {Template, TemplateExercise} from '../../../../core/models/template';
 
 @Component({
   selector: 'app-template-create',
@@ -11,16 +9,13 @@ import {FormsModule} from '@angular/forms';
   standalone: true,
   templateUrl: './template-create.html',
   styleUrl: './template-create.scss',
-  providers: [TemplateService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'template-create'
   }
 })
 export class TemplateCreate {
-
-  #router = inject(Router);
-  #templateService = inject(TemplateService);
-
+  readonly #templateStore = inject(TemplateStore);
   #EMPTY = '';
 
   templateName = signal<string>(this.#EMPTY);
@@ -28,18 +23,17 @@ export class TemplateCreate {
   exercises = signal<TemplateExercise[]>([]);
 
   hasExercises = computed(() => this.exercises().length > 0);
-
   isSaveButtonDisabled = computed(() => this.templateName().trim() === this.#EMPTY || this.exercises().length === 0);
 
   onAddExercise(): void {
     const rawExerciseName = this.exerciseName().trim();
 
-    if (!rawExerciseName) return;
+    if (rawExerciseName === this.#EMPTY) return;
 
     const newExercise: TemplateExercise = {
       id: crypto.randomUUID(),
       name: rawExerciseName
-    }
+    };
 
     this.exercises.update(currentExercises => [...currentExercises, newExercise]);
     this.exerciseName.set(this.#EMPTY);
@@ -56,9 +50,16 @@ export class TemplateCreate {
       id: crypto.randomUUID(),
       name: this.templateName().trim(),
       exercises: this.exercises()
-    }
+    };
 
-    this.#templateService.saveTemplate(newTemplate);
-    this.#router.navigate([APP_ROUTES.TEMPLATE_LIST]);
+    this.#templateStore.saveTemplate(newTemplate);
+
+    this.resetForm();
+  }
+
+  private resetForm(): void {
+    this.templateName.set(this.#EMPTY);
+    this.exerciseName.set(this.#EMPTY);
+    this.exercises.set([]);
   }
 }

@@ -1,5 +1,4 @@
 import {Routes} from '@angular/router';
-import {TemplateCreate} from './features/templates/components/template-create/template-create';
 
 export const routes: Routes = [
   {
@@ -9,6 +8,12 @@ export const routes: Routes = [
   },
   {
     path: 'templates',
-    component: TemplateCreate,
+    loadComponent: () =>
+      import('./features/templates/components/template-create/template-create').then(m => m.TemplateCreate),
+  },
+  {
+    path: 'calendar',
+    loadComponent: () =>
+      import('./features/calendar/components/calendar-container/calendar-container').then(m => m.CalendarContainer),
   }
 ];
