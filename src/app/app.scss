@@ -1,0 +1,7 @@
+.app-main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  padding-bottom: calc(var(--nav-bar-height) + env(safe-area-inset-bottom));
+}

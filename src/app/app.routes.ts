@@ -9,7 +9,17 @@ export const routes: Routes = [
   {
     path: 'templates',
     loadComponent: () =>
+      import('./features/templates/components/template-list/template-list').then(m => m.TemplateList),
+  },
+  {
+    path: 'templates/new',
+    loadComponent: () =>
       import('./features/templates/components/template-create/template-create').then(m => m.TemplateCreate),
+  },
+  {
+    path: 'templates/:id',
+    loadComponent: () =>
+      import('./features/templates/components/template-details/template-details').then(m => m.TemplateDetails),
   },
   {
     path: 'calendar',

@@ -1,6 +1,15 @@
 :host {
   display: block;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   padding: var(--container-padding);
+}
+
+:host::-webkit-scrollbar {
+  display: none;
 }
 
 .calendar-container__header {

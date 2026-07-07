@@ -1,7 +1,9 @@
 import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
 import {TemplateStore} from '../../services/template.store';
-import {Template, TemplateExercise} from '../../../../core/models/template';
+import {Template, TemplateExercise} from '@core/models/template';
+import {TEMPLATE_ROUTES} from '@core/constants/routes.constants';
 
 @Component({
   selector: 'app-template-create',
@@ -16,6 +18,8 @@ import {Template, TemplateExercise} from '../../../../core/models/template';
 })
 export class TemplateCreate {
   readonly #templateStore = inject(TemplateStore);
+  readonly #router = inject(Router);
+
   #EMPTY = '';
 
   templateName = signal<string>(this.#EMPTY);
@@ -55,6 +59,7 @@ export class TemplateCreate {
     this.#templateStore.saveTemplate(newTemplate);
 
     this.resetForm();
+    this.#router.navigate([TEMPLATE_ROUTES.LIST]);
   }
 
   private resetForm(): void {

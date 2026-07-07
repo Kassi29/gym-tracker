@@ -1,12 +1,16 @@
 :host {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
   padding: var(--container-padding);
   gap: var(--spacing-base);
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .template-create__header {
+  flex-shrink: 0;
   margin-bottom: var(--spacing-md);
 }
 
@@ -15,7 +19,16 @@
 }
 
 .template-create__main {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   gap: var(--spacing-lg);
+}
+
+.template-create__main::-webkit-scrollbar {
+  display: none;
 }
 
 .template-create__input {
@@ -63,9 +76,10 @@
 }
 
 .template-create__footer {
+  flex-shrink: 0;
   margin-top: auto;
   padding-top: var(--spacing-lg);
-  padding-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
 }
 
 .template-create__btn-block {

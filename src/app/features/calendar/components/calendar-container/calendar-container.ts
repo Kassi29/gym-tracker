@@ -2,10 +2,10 @@ import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@ang
 import {format} from 'date-fns/format';
 import {subMonths} from 'date-fns/subMonths';
 import {addMonths} from 'date-fns/addMonths';
-import {getCalendarGridDays, isBeforeMinMonth} from '../../../../core/calendar.utils';
+import {getCalendarGridDays, isBeforeMinMonth} from '@core/calendar.utils';
 import {CalendarGrid} from '../calendar-grid/calendar-grid';
-import {BottomSheet} from '../../../../shared/bottom-sheet/bottom-sheet';
-import {TemplateStore} from '../../../templates/services/template.store';
+import {BottomSheet} from '@shared/bottom-sheet/bottom-sheet';
+import {TemplateStore} from '@features/templates/services/template.store';
 
 @Component({
   selector: 'app-calendar-container',

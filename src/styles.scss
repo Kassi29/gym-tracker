@@ -85,6 +85,13 @@
   --scrim: rgba(0, 0, 0, 0.6);
   --scrim-strong: rgba(0, 0, 0, 0.4);
   --always-on-contrast: #ffffff;
+
+  --z-base: 1;
+  --z-nav: 10;
+  --z-fab: 15;
+  --z-overlay: 20;
+
+  --nav-bar-height: 56px;
 }
 
 *,

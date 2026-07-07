@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
-import {isDayInCurrentMonth} from '../../../../core/calendar.utils';
+import {isDayInCurrentMonth} from '@core/calendar.utils';
 import {isSameDay} from 'date-fns/isSameDay';
 import {format} from 'date-fns/format';
 

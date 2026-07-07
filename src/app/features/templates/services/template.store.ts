@@ -1,5 +1,5 @@
 import {effect, Injectable, signal} from '@angular/core';
-import {Template} from '../../../core/models/template';
+import {Template} from '@core/models/template';
 
 const STORAGE_KEY = 'gym-tracker:templates';
 
@@ -39,5 +39,13 @@ export class TemplateStore {
 
   saveTemplate(template: Template): void {
     this.#templates.update(current => [...current, template]);
+  }
+
+  updateTemplate(updatedTemplate: Template): void {
+    this.#templates.update(current => current.map(template => template.id === updatedTemplate.id ? updatedTemplate : template));
+  }
+
+  deleteTemplate(id: string): void {
+    this.#templates.update(current => current.filter(template => template.id !== id));
   }
 }

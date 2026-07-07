@@ -6,7 +6,7 @@
   <p class="text-body-md text-muted">Add your exercises :)</p>
 </header>
 
-<main class="flex-column template-create__main">
+<section class="flex-column template-create__main">
   <section class="flex-column workout-card">
     <label class="text-label-sm" for="template-name">Routine Name</label>
     <input id="template-name"
@@ -49,12 +49,12 @@
       </ul>
     }
   </section>
-</main>
+</section>
 
 <footer class="template-create__footer">
   <button class="btn-primary template-create__btn-block text-body-lg"
           [disabled]="isSaveButtonDisabled()"
           (click)="onSaveTemplate()">
-    <i class="fa-solid fa-floppy-disk"></i> Save
+    Save
   </button>
 </footer>

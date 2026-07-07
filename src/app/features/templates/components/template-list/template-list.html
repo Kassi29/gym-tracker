@@ -1,0 +1,37 @@
+<header class="template-list__header">
+  <h1 class="text-headline-lg template-list__title">
+    My Templates
+  </h1>
+</header>
+
+<section class="template-list__content">
+  @if (templates().length === 0) {
+    <p class="template-list__empty text-body-md">No templates yet. Create one!</p>
+  } @else {
+    <ul class="template-list__grid">
+      @for (template of templates(); track template.id) {
+        <li class="template-card"
+            (click)="seeTemplateDetails(template.id)">
+          <div class="template-card__header">
+            <h2 class="text-headline-md template-card__title">{{ template.name }}</h2>
+
+            <i class="fa-solid fa-chevron-right template-card__chevron"></i>
+          </div>
+
+          <div class="template-card__footer">
+            <div class="template-card__metric">
+              <span class="text-label-sm template-card__metric-label">Exercises</span>
+              <span class="text-mono-metrics template-card__metric-value">{{ template.exercises.length }}</span>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</section>
+
+<button class="template-list__fab"
+        (click)="addNewTemplate()"
+        aria-label="Create new template">
+  <i class="fa-solid fa-plus template-list__fab-icon"></i>
+</button>

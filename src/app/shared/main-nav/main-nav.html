@@ -1,0 +1,25 @@
+<nav class="main-nav__container">
+  <ul class="main-nav__list">
+    <li class="main-nav__item">
+      <a [routerLink]="TEMPLATE_PATH"
+         routerLinkActive="main-nav__link--active"
+         class="main-nav__link flex-column">
+
+        <i class="fa-solid fa-dumbbell main-nav__icon"></i>
+
+        <span class="text-label-sm">Templates</span>
+      </a>
+    </li>
+
+    <li class="main-nav__item">
+      <a [routerLink]="CALENDAR_PATH"
+         routerLinkActive="main-nav__link--active"
+         class="main-nav__link flex-column">
+
+        <i class="fa-regular fa-calendar main-nav__icon"></i>
+
+        <span class="text-label-sm">Calendar</span>
+      </a>
+    </li>
+  </ul>
+</nav>
